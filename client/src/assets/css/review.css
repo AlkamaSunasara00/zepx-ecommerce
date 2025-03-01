@@ -1,0 +1,102 @@
+/* Main Review Slider Container */
+.review-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+  
+  /* Wrapper for Slider */
+  .slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Track for sliding reviews */
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Individual Review Slide */
+  .slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Review Card */
+  .review-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .review-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Review Text */
+  .review-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Review Rating */
+  .review-rating {
+    font-size: 20px;
+    color: #ffcc00;
+  }
+  
+  /* Reviewer Name */
+  .review-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  /* Buttons for Navigation */
+  .prev1-btn, .next1-btn {
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    position: absolute;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 100;
+  }
+  
+  .prev1-btn { left: 8px; }
+  .next1-btn { right: 8px; }
+  
+  .prev1-btn:hover, .next1-btn:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .slide { flex: 0 0 50%; } /* Show 2 reviews on tablets */
+  }
+  
+  @media (max-width: 768px) {
+    .slide { flex: 0 0 100%; } /* Show 1 review on mobile */
+  }
+  

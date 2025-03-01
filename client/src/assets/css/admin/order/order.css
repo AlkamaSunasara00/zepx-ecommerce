@@ -1,0 +1,200 @@
+.main-order-container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header-order {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.header-order-txt {
+    font-size: 23px;
+}
+.header-order-txt span{
+   font-size: 15px;
+}
+
+.header-order-btns {
+    display: flex;
+    width: 21%;
+    gap: 20px;
+}
+
+.header-order-btns i {
+    font-size: 18px;
+}
+
+.header-order-export button {
+    display: flex;
+    padding: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 5px;
+    border-radius: 8px;
+    align-items: center;
+    border: none;
+    background-color: #3858D6;
+    color: white;
+}
+.header-order-export button:hover{
+   background-color: #8B8E99;
+   color: white;
+   cursor: pointer;
+}
+
+.header-order-export button p{
+   font-size: 12px;
+   font-weight: 600;
+}
+
+.header-order-add button {
+   display: flex;
+   padding: 7px;
+   padding-left: 8px;
+   padding-right: 11px;
+   gap: 5px;
+   border-radius: 8px;
+   align-items: center;
+   border: none;
+   background-color: #3858D6;
+   color: white;
+   
+}
+.header-order-add button:hover{
+   background-color: #8B8E99;
+   color: white;
+   cursor: pointer;
+}
+.header-order-add button p{
+   font-size: 12px;
+   font-weight: 600;
+}
+
+
+
+
+.order-table {
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   overflow: hidden;
+   margin-top: 20px;
+}
+
+.order-table table {
+   width: 100%;
+   border-collapse: collapse;
+
+}
+
+.order-flexx{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+.order-id{
+    width: 9%;
+}
+.order-id th{
+   width: 9%;
+}
+.order-table thead tr th {
+   width: -1px;
+}
+.order-table thead th {
+   background-color: #3858D6;
+   color: white;
+}
+.order-prod{
+   width: 17%;
+}
+
+.order-table tbody {
+   display: block;
+   max-height: 396px;
+   overflow-y: auto;
+   width: 100%;
+}
+
+.order-table th,
+.order-table td {
+   padding: 15px;
+   text-align: left;
+   border-bottom: 1px solid #e0e0e0;
+   font-size: 14px;
+   color: #555;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.order-table thead,
+.order-table tbody tr {
+   display: table;
+   width: 100%;
+   table-layout: fixed;
+}
+
+.order-table th,
+.order-table td {
+   padding: 12px;
+}
+.order-table tbody::-webkit-scrollbar {
+   display: none;
+}
+
+
+.order-table th {
+   background-color: #f9f9fb;
+   color: #888;
+   font-weight: 600;
+}
+
+.order-table tr:hover {
+   background-color: #f3f4f6;
+}
+#order-img{
+   width: 50px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+#order-img img{
+   width: 50%;
+   height: 50%;
+}
+.order-info{
+    width: 17%;
+}
+.images-td{
+   width: 8%;
+}
+
+
+
+
+.action-icons {
+   display: flex;
+   gap: 15px;
+   color: #888;
+}
+
+.action-icons i {
+   cursor: pointer;
+}
+
+.action-icons i:hover {
+   color: #7a5af8;
+}
+.order-img {
+   width: 50px;
+   height: 50px;
+   border-radius: 10px;
+   object-fit: cover;
+}
+

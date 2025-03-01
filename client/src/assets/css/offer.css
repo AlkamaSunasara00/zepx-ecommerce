@@ -1,0 +1,126 @@
+.offer-section {
+    background-color: #f8f8f8;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .offer-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .offer-container h2 {
+    font-size: 30px;
+    color: #333;
+  }
+  
+  .offer-container p {
+    font-size: 20px;
+    color: #666;
+  }
+  
+  .offer-image  {
+    cursor: pointer;
+    width: 85%;
+  }
+  .offer-image img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .offer-btn {
+    color: #FFFFFF;
+    background-color: #3858D6;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .offer-btn:hover {
+    background-color: #1e40c6;
+  }
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.loading-dots span {
+  width: 10px;
+  height: 10px;
+  background-color: #3d57be;
+  border-radius: 50%;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+      transform: scale(0);
+  }
+  40% {
+      transform: scale(1);
+  }
+}
+
+
+
+
+  @media only screen and (min-width: 621px) and (max-width: 741px){
+
+    .offer-image  {
+      width: 100%;
+    }
+    .offer-container h2 {
+      font-size: 25px;
+      color: #333;
+    }
+    
+    .offer-container p {
+      font-size: 15px;
+      color: #666;
+    }
+  }
+  @media only screen and (min-width: 50px) and (max-width: 620px){
+
+    .offer-image  {
+      width: 100%;
+    }
+    .offer-container h2 {
+      font-size: 23px;
+      color: #333;
+    }
+    
+    .offer-container p {
+      font-size: 16px;
+      color: #666;
+    }
+  }

@@ -1,0 +1,304 @@
+.content-account {
+  background-color: #ffffff;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.sub1-account {
+  width: 100%;
+  padding-top: 15px;
+}
+
+.sub1-account p {
+  color: #a4a7a9;
+  margin-left: 25px;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.sub1-account:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #a4a7a9;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sub2-account {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+}
+
+.item1-account {
+  width: 15%;
+  height: 15%;
+}
+
+.img-account {
+  width: 100%;
+  height: 100%;
+}
+
+.img-account img {
+  width: 95px;
+  height: 100px;
+  border-radius: 55px;
+}
+
+.item2-account {
+  width: 85%;
+}
+
+.items {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.items .all-account {
+  width: 50%;
+}
+
+.items .all-account .label-account {
+  margin-bottom: 8px;
+}
+
+.items .all-account .input-account {
+  width: 90%;
+  margin-bottom: 10px;
+}
+.input-account textarea {
+  width: 100%;
+  height: 100px;
+}
+.items .all-account .input-account input {
+  width: 100%;
+  padding: 10px;
+  color: #656667;
+  border: 1px solid #a4a7a9;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 14px;
+}
+.items .all-account .input-account input:focus{
+  outline: none;
+}
+
+.item2-account button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  color: #3858D6;
+  padding: 14px;
+  border-radius: 15px;
+  border: 2px solid #3858D6;
+  font-weight: 700;
+}
+
+ .item2-account button:hover {
+  background-color: #3858D6;
+  color: white;
+  cursor: pointer;
+}
+
+.file-upload {
+  height: fit-content;
+  width: fit-content;
+  border-radius: 8px;
+
+}
+
+.file-upload input[type="file"] {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: relative;
+  top: -30px;
+  cursor: pointer;
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #656667;
+  color: white;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.upload-btn:hover {
+  background-color: #3858D6; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly increase size */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+.upload-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+
+@media only screen and (min-width:900px) and (max-width: 1100px){
+
+  .upload-btn{
+    padding: 9px 15px;
+  font-size: 13px;
+  }
+}
+@media only screen and (min-width:807px) and (max-width: 899px){
+
+  .upload-btn{
+    padding: 8px 13px;
+  font-size: 12px;
+  }
+}
+
+@media only screen and (min-width:767px) and (max-width: 806px){
+
+  .sub2-account{
+    display: block;
+  }
+
+  .img-account {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  .item2-account {
+    width: 100%;
+}
+.sub2-account{
+  padding-right: 0px;
+  padding-top: 5px;
+}
+.item1-account {
+  margin-bottom: 10px;
+}
+.upload-btn{
+  margin-top: 20px;
+  margin-left: 15px;
+  padding: 8px 13px;
+font-size: 12px;
+}
+}
+
+@media only screen and (min-width:629px) and (max-width: 768px){
+
+  .item1-account {
+    width: 9%;
+    height: 9%;
+  }
+  .upload-btn{
+    padding: 8px 8px;
+  font-size: 10px;
+  }
+}
+
+@media only screen and (min-width:437px) and (max-width: 628px){
+
+  .sub2-account{
+    display: block;
+    padding-right: 0px;
+  }
+  .item2-account {
+    width: 100%;
+}
+.item1-account {
+  margin-bottom: 10px;
+}
+.img-account {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.upload-btn{
+  margin-top: 20px;
+  margin-left: 15px;
+  padding: 8px 13px;
+font-size: 12px;
+}
+}
+
+@media only screen and (min-width:385px) and (max-width: 436px){
+  .sub2-account{
+    display: block;
+    padding-right: 0px;
+  }
+  .item2-account {
+    width: 100%;
+}
+.item1-account {
+  margin-bottom: 10px;
+}
+.items{
+  display: block;
+}
+.items .all-account {
+  width: 95%;
+}
+.items .all-account .input-account {
+  width: 100%;
+}
+.item2-account button {
+  padding: 12px;
+}
+.img-account {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.upload-btn{
+  margin-top: 10px;
+  margin-left: 15px;
+  padding: 8px 13px;
+font-size: 12px;
+}
+}
+
+@media only screen and (min-width:320px) and (max-width: 384px){
+  .sub2-account{
+    display: block;
+    padding-right: 0px;
+  }
+  .item2-account {
+    width: 100%;
+}
+.item1-account {
+  margin-bottom: 10px;
+}
+.items{
+  display: block;
+}
+.items .all-account {
+  width: 95%;
+}
+.items .all-account .input-account {
+  width: 100%;
+}
+.item2-account button {
+  padding: 10px;
+}
+.img-account {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.upload-btn{
+  margin-top: 10px;
+  margin-left: 15px;
+  padding: 7px 10px;
+font-size: 12px;
+}
+}

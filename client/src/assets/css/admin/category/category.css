@@ -1,0 +1,195 @@
+.main-category-container {
+   padding-left: 15px;
+   padding-right: 15px;
+}
+
+.header-category {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 25px;
+   width: 100%;
+}
+
+.header-category-txt {
+   font-size: 23px;
+}
+
+.header-category-btns {
+   display: flex;
+   width: 23%;
+   gap: 20px;
+}
+
+.header-category-btns i {
+   font-size: 18px;
+}
+
+.header-category-export button {
+   display: flex;
+   padding: 7px;
+   padding-left: 10px;
+   padding-right: 10px;
+   gap: 5px;
+   border-radius: 8px;
+   align-items: center;
+   border: none;
+   background-color: #3858D6;
+   color: white;
+}
+
+.header-category-export button:hover {
+   background-color: #8B8E99;
+   color: white;
+   cursor: pointer;
+}
+
+.header-category-export button p {
+   font-size: 12px;
+   font-weight: 600;
+}
+
+.header-category-add button {
+   display: flex;
+   padding: 7px;
+   padding-left: 8px;
+   padding-right: 11px;
+   gap: 5px;
+   border-radius: 8px;
+   align-items: center;
+   border: none;
+   background-color: #3858D6;
+   color: white;
+
+}
+
+.header-category-add button:hover {
+   background-color: #8B8E99;
+   color: white;
+   cursor: pointer;
+}
+
+.header-category-add button p {
+   font-size: 12px;
+   font-weight: 600;
+}
+
+
+
+
+.category-table {
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   overflow: hidden;
+   margin-top: 20px;
+}
+
+.category-table table {
+   width: 100%;
+   border-collapse: collapse;
+
+}
+
+.category-table thead th {
+   background-color: #3858D6;
+   color: white;
+}
+
+.category-table tbody {
+   display: block;
+   max-height: 396px;
+   overflow-y: auto;
+   width: 100%;
+}
+
+.category-table th,
+.category-table td {
+   padding: 15px;
+   text-align: left;
+   border-bottom: 1px solid #e0e0e0;
+   font-size: 14px;
+   color: #555;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   overflow-y: auto;
+   scrollbar-width: none;
+}
+
+.category-table thead,
+.category-table tbody tr {
+   display: table;
+   width: 100%;
+   table-layout: fixed;
+}
+
+.category-table th,
+.category-table td {
+   padding: 20px;
+}
+
+.category-table tbody::-webkit-scrollbar {
+   display: none;
+}
+
+.category-td {
+   width: 250px;
+}
+
+
+.category-table th {
+   background-color: #f9f9fb;
+   color: #888;
+   font-weight: 600;
+}
+
+.category-table tr:hover {
+   background-color: #f3f4f6;
+}
+
+.category-info {
+   padding: 0px;
+}
+
+#category-img {
+   width: 115px;
+   display: flex;
+   align-items: center;
+}
+
+#category-img img {
+   width: 50%;
+   height: 50%;
+}
+
+.category-info {
+   width: 8%;
+}
+
+.images-td {
+   width: 8%;
+}
+
+
+
+
+.action-icons {
+   display: flex;
+   gap: 15px;
+   color: #888;
+}
+
+.action-icons i {
+   cursor: pointer;
+}
+
+.action-icons i:hover {
+   color: #7a5af8;
+}
+
+/* .product-img {
+   width: 50px;
+   height: 50px;
+   border-radius: 10px;
+   object-fit: cover;
+} */

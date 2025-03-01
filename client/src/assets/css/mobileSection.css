@@ -1,0 +1,234 @@
+.product-slider {
+    background-color: #FFFFFF;
+    font-family: poppins;
+}
+
+.product-slider-section {
+    width: 85%;
+    margin: 0 auto;
+    padding: 60px 0px;
+    position: relative;
+}
+
+.product-slider-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.product-slider-heading h3 {
+    font-size: 41px;
+    font-weight: 800;
+}
+
+.product-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-slider-content {
+    display: flex;
+    width: 100%;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: transform 0.5s ease-in-out;
+}
+.product-slider-content {
+    display: flex;
+    width: 100%;
+    /* overflow-x: scroll  ; */
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    /* -webkit-overflow-scrolling: touch; */
+}
+
+.product-slider-content::-webkit-scrollbar {
+    display: none;
+}
+
+.product-slide {
+    display: flex;
+    flex: 0 0 100%;
+    justify-content: space-between;
+}
+
+.product-slider-card {
+    text-align: center;
+    flex: 0 0 calc(25% - 20px);
+    scroll-snap-align: start;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+
+.product-img {
+    height: 203px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-name h3 {
+    color: #000000;
+    font-size: 23px;
+    font-weight: 700;
+    margin: 10px 0 5px;
+}
+
+.product-price {
+    margin: 4px 0px 14px 0px;
+}
+
+.product-price p {
+    color: #1D1D1F;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.product-button button {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #3858D6;
+    border: none;
+    padding: 10px 60px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-button button:hover {
+    background-color: #2f4bba;
+}
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #FFFFFF;
+    color: #000000;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 2;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background: #39393a;
+    color: white;
+}
+
+.prev-btn {
+    left: -25px;
+}
+
+.next-btn {
+    right: -25px;
+}
+
+.slider-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: #3858D6;
+}
+
+@media only screen and (max-width: 992px) {
+    .product-slide {
+        justify-content: space-around;
+    }
+    
+    .product-slider-card {
+        flex: 0 0 calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+    
+    .product-slide {
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .product-slider-section {
+        width: 90%;
+        padding: 30px 0px;
+    }
+    
+    .product-slider-heading h3 {
+        font-size: 32px;
+    }
+    
+    .prev-btn,
+    .next-btn {
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .product-slider-section {
+        width: 95%;
+        padding: 25px 0px;
+    }
+    
+    .product-slider-heading h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .product-slider-heading {
+        margin-bottom: 30px;
+    }
+    
+    .prev-btn,
+    .next-btn {
+        font-size: 20px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .prev-btn {
+        left: -8px;
+    }
+    
+    .next-btn {
+        right: -8px;
+    }
+    
+    .product-button button {
+        padding: 8px 40px;
+        font-size: 14px;
+    }
+}

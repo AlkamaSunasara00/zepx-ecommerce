@@ -1,0 +1,288 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:poppins;
+}
+
+.container {
+    width: 100%;
+
+}
+
+.main-footer-section {
+    width: 100%;
+    background-image: linear-gradient(180deg, #292829, #0B0B0B);
+}
+
+.footer {
+    color: white;
+
+
+
+    width: 93%;
+   
+    margin: 0 auto;
+    padding-top: 46px;
+
+
+}
+
+.footer-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-evenly;
+    font-family: sans-serif;
+   
+
+}
+
+.footer-list ul {
+    list-style: none;
+    line-height: 30px;
+
+}
+
+.footer-list h5 {
+    margin-bottom: 10px;
+    color: #8B8E99;
+    font-size: 17px;
+}
+
+.footer-list p {
+    font-size: 16px;
+    font-weight: 500;
+
+}
+
+.footer-list ul li a  :hover{
+color: #a4a7a9;
+}
+
+.footer-logo {
+    width: 11%;
+    margin-top: 10px;
+}
+
+.footer-logo img {
+    width: 100%;
+}
+
+
+.footer-links-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    font-family: sans-serif;
+    padding-bottom: 30px;
+    gap: 23%;
+}
+
+.footer-links-list p {
+    color: #FFFFFF3D;
+    margin-top: 7px;
+}
+
+
+.footer-links-icons ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+
+
+
+.footer-links-icons ul li:hover {
+    color: #cacaca;
+}
+
+
+@media only screen and (min-width: 751px) and (max-width: 1240px){
+
+    .footer {
+        width: 89%;
+    }
+
+    .footer-section {
+        justify-content: space-between;
+    }
+
+    .footer-list p {
+        font-size: 15px;
+    }
+
+    .footer-list h5 {
+        font-size: 15px;
+    }
+
+    .footer-logo {
+        width: 15%;
+    }
+
+    .footer-links-list {
+        gap: 22%;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 750px){
+
+    .footer {
+        width: 89%;
+    }
+
+    .footer-section {
+        justify-content: space-between;
+    }
+
+    .footer-list p {
+        font-size: 15px;
+    }
+
+    .footer-list h5 {
+        font-size: 15px;
+    }
+
+    .footer-logo {
+        width: 15%;
+    }
+
+    .footer-links-list {
+        gap: 15%;
+    }
+}
+
+ @media only screen and (min-width: 471px) and (max-width: 600px) {
+    .footer {
+        width: 90%;
+    }
+
+    .footer-section {
+        justify-content: space-between;
+    }
+
+    .footer-list p {
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .footer-list h5 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+
+    .footer-links-list {
+        display: block;
+        text-align: center;
+        justify-content: center;
+        margin-top: 47px;
+    }
+
+    .footer-links-icons ul {
+        margin: 26px 0;
+        justify-content: center;
+    }
+
+    .footer-links-list p {
+        font-size: 17px;
+    }
+
+    .footer-logo {
+       display: none;
+    }
+
+}
+
+
+
+@media only screen and (min-width: 301px) and (max-width: 470px) {
+    .footer {
+        width: 81%;
+    }
+
+    .footer-section {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    .footer-list p {
+        font-size: 19px;
+        font-weight: 400;
+        margin-bottom: 8px;
+    }
+
+    .footer-list h5 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 40px;
+    }
+
+    .footer-logo {
+        display: none;
+    }
+
+    .footer-links-list {
+        display: block;
+        text-align: center;
+        justify-content: center;
+        margin-top: 47px;
+    }
+
+    .footer-links-icons ul {
+        margin: 26px 0;
+        justify-content: center;
+    }
+
+    .footer-links-list p {
+        font-size: 17px;
+    }
+}
+
+@media only screen and (min-width: 50px) and (max-width: 300px) {
+    .footer {
+        width: 81%;
+    }
+
+    .footer-section {
+        display: block;
+        text-align: center;
+    }
+    .footer-list p {
+        font-size: 15px;
+        font-weight: 400;
+        margin-bottom: 8px;
+    }
+
+    .footer-list h5 {
+        font-size: 17px;
+        font-weight: 600;
+        margin-top: 40px;
+    }
+
+    .footer-logo {
+        display: none;
+    }
+
+    .footer-links-list {
+        display: block;
+        text-align: center;
+        justify-content: center;
+        margin-top: 47px;
+    }
+
+    .footer-links-icons ul {
+        margin: 26px 0;
+        justify-content: center;
+    }
+
+    .footer-links-list p {
+        font-size: 15px;
+    }
+}

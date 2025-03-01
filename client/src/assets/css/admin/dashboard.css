@@ -1,0 +1,58 @@
+#dashboard-container {
+  text-align: center; 
+  margin-top: 50px;
+}
+
+.welcome-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* More space between WELCOME and BACK */
+}
+
+.word-group {
+  display: flex;
+  justify-content: center;
+  gap: 1px; /* Space between letters */
+}
+
+/* Bounce effect for each letter */
+.bounce-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: bounceIn 0.5s ease-out forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-in effect for admin name */
+.admin-name {
+  display: inline-block;
+  color: #007bff;
+  font-weight: bold;
+  margin-top: 10px;
+  transform: translateX(50px);
+  opacity: 0;
+  transition: transform 0.9s ease-out, opacity 0.8s ease-out;
+}
+
+.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+}

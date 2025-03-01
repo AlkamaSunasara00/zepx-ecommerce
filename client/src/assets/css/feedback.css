@@ -1,0 +1,344 @@
+.feedback-container {
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F7;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-family:poppins;
+}
+
+.sub-feedback {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.sub1-feedback {
+    width: 50%;
+    padding: 20px;
+}
+
+.sub1-feedback h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sub1-feedback p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Updated Feedback Form Style */
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* New Message Input & Button Styling */
+.feedback-message {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.feedback-message input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    outline: none;
+    border-radius: 10px 0 0 10px;
+    background-color: #f6f6f6;
+}
+
+.feedback-message button {
+    padding: 12px 20px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    font-size: 16px;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.feedback-message button:hover {
+    background: #2563eb;
+}
+
+.sub2-feedback {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-img {
+    width: 100%;
+}
+
+.feedback-img img {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsive Styles */
+@media only screen and (min-width: 946px) and (max-width: 1130px){
+    .sub1-feedback h2 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+    
+    .sub1-feedback p {
+        font-size: 15px;
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 20px;
+    }
+}
+
+@media only screen and (min-width: 864px) and (max-width: 945px){
+    .sub1-feedback h2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+    
+    .sub1-feedback p {
+        font-size: 15px;
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 23px;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 863px){
+    .sub1-feedback h2 {
+        font-size: 23px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+    
+    .sub1-feedback p {
+        font-size: 15px;
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 20px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 799px){
+    .sub1-feedback h2 {
+        font-size: 21px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+    
+    .sub1-feedback p {
+        font-size: 15px;
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 20px;
+    }
+}
+
+@media only screen and (min-width: 510px) and (max-width: 768px){
+    .sub-feedback {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .sub1-feedback h2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+
+    .sub1-feedback,
+    .sub2-feedback {
+        width: 100%;
+    }
+
+    .feedback-form {
+        width: 100%;
+    }
+
+    .feedback-message {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .feedback-message input {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .feedback-message button {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+@media only screen and (min-width: 441px) and (max-width: 509px){
+    .sub-feedback {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .sub1-feedback h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+
+    .sub1-feedback,
+    .sub2-feedback {
+        width: 100%;
+    }
+
+    .feedback-form {
+        width: 100%;
+    }
+
+    .feedback-message {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .feedback-message input {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .feedback-message button {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+@media only screen and (min-width: 415px) and (max-width: 440px){
+    .sub-feedback {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .sub1-feedback h2 {
+        font-size: 23px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+
+    .sub1-feedback,
+    .sub2-feedback {
+        width: 100%;
+    }
+
+    .feedback-form {
+        width: 100%;
+    }
+
+    .feedback-message {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .feedback-message input {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .feedback-message button {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+@media only screen and (min-width: 385px) and (max-width: 414px){
+    .sub-feedback {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .sub1-feedback h2 {
+        font-size: 21px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+
+    .sub1-feedback,
+    .sub2-feedback {
+        width: 100%;
+    }
+
+    .feedback-form {
+        width: 100%;
+    }
+
+    .feedback-message {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .feedback-message input {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .feedback-message button {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+@media only screen and (min-width: 50px) and (max-width: 384px){
+    .sub-feedback {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .sub1-feedback h2 {
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+
+    .sub1-feedback,
+    .sub2-feedback {
+        width: 100%;
+    }
+
+    .feedback-form {
+        width: 100%;
+    }
+
+    .feedback-message {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .feedback-message input {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .feedback-message button {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+
