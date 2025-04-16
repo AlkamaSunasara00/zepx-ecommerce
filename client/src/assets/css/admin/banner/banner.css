@@ -38,7 +38,7 @@
     gap: 30px;
 }
 .banner-imgg{
-    width: 100%;
+    width: 30%;
     height: 100%;
     
     
@@ -102,7 +102,16 @@
     border-radius: 7px;
 }
 
-.banner-imgg-icon{
+.banner-imgg-icon {
     width: fit-content;
-    color:#858D9D ;
+    color: #858D9D;
+    position: relative;
+    top: -240px;
+    left: 264px;
+}
+.banner-imgg-icon button{
+    border-radius: 15px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: none;
 }

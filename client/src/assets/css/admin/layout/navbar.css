@@ -118,6 +118,7 @@
    padding: 6px;
    border-top-left-radius: 5px;
    border-bottom-left-radius: 5px;
+   margin-bottom: 2px;
  }
 
  .menu-aside ul li:hover {
@@ -164,6 +165,7 @@
    padding: 6px;
    border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  margin-bottom: 2px;
  }
 
  .user-aside ul li:hover {
@@ -210,6 +212,7 @@
    padding: 6px;
    border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  margin-bottom: 2px;
  }
 
  .setting-aside ul li:hover {
@@ -304,6 +307,7 @@
  .searchbar {
    display: flex;
    width: fit-content;
+   height: fit-content;
  }
 
  .sub-searchbar {

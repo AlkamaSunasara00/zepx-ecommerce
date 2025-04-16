@@ -65,8 +65,6 @@ function Banner() {
                     headers: { "Content-Type": "multipart/form-data" }
                 });
 
-                console.log("Upload Success:", response.data);
-
                 // Refresh banner list after upload
                 getbanner();
             } catch (error) {
@@ -104,8 +102,6 @@ function Banner() {
 
 
                            </div>
-
-
                         )
                     })}
                 </div>
@@ -149,75 +145,3 @@ function Banner() {
 }
 
 export default Banner;
-
-
-
-
-
-
-
-
-
-// import React from 'react';
-// import '../../../../assets/css/admin/banner/banner.css';
-// import { useRef } from "react";
-
-// function Banner() {
-
-//     const fileInputRef = useRef(null);
-//     const handleButtonClick = () => {
-//         fileInputRef.current.click();
-//     };
-//     return (
-//         <div className='main-banner-container'>
-//             <div className='header-banner'>
-//                 <div className='header-banner-txt'>
-//                     <p>Banner</p>
-//                 </div>
-//             </div>
-//             <div className='banner-table'>
-//                 <div className='sub1-banner-table'>
-//                     <p>Current Banner</p>
-//                 </div>
-//                 <div className='sub-banner-table'>
-//                     <div className='banner-imgg'>
-//                         <img src={require('../../../../assets/images/mobileBanner.png')}></img>
-//                         <div className='banner-imgg-icon'><button><i class="fa-solid fa-xmark"></i></button></div>
-//                     </div>
-                    
-//                 </div>
-//             </div >
-//             <div className='main-add-image'>
-//                 <div className='add-image-txt'>
-//                     <p>Upload New One</p>
-//                 </div>
-//                 <div className='sub-add-image' onClick={handleButtonClick}>
-//                         <div className='add-image'>
-//                             <div className='add-image-icon'>
-//                                 <i class="fa-regular fa-image"></i>
-//                             </div>
-//                             <div className='add-image-txt'>
-//                                 <p>click here to add image</p>
-//                             </div>
-//                             <div className='add-image-button'>
-//                                 <label id="upload">
-//                                     <button type='button' onClick={handleButtonClick}>Add Image</button>
-//                                 </label>
-//                                 <input
-//                                     type="file"
-//                                     name="img"
-//                                     ref={fileInputRef}
-//                                     id="upload"
-//                                     // onChange={handleFileChange}
-//                                     accept="image/*"
-//                                     style={{ display: "none" }}
-//                                 />
-//                             </div>
-//                         </div>
-//                 </div>
-//             </div>
-//         </div >
-//     );
-// }
-
-// export default Banner;

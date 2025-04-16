@@ -1,10 +1,12 @@
-import React, { useEffect, useState, } from 'react';    
+import React, { useEffect, useState,useContext } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../assets/css/account.css";
 import UserInfo from "./UserInfo";
+import OrderHistory from './OrderHistory';
 import axios from "axios";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
+import { CartContext } from "../../context/CartContext";
 import { NavLink } from "react-router-dom";
 
 const port = process.env.REACT_APP_URL;
@@ -12,6 +14,9 @@ const port = process.env.REACT_APP_URL;
 
 
 const Account = () => {
+
+  const { setUser } = useContext(CartContext);
+
   const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -23,6 +28,8 @@ const Account = () => {
       setActiveTab("dashboard");
     } else if (location.pathname === "/user/account-info") {
       setActiveTab("account");
+    }else if (location.pathname === "/user/order-history") {
+      setActiveTab("order");
     } else if (location.pathname === "/cart") {
       setActiveTab("cart");
     }
@@ -38,6 +45,7 @@ const Account = () => {
       localStorage.removeItem("user_id");
       localStorage.removeItem("cart");
       localStorage.removeItem("isLoggedIn");
+      setUser(null);
       navigate("/login");
     }
   };
@@ -93,6 +101,12 @@ const Account = () => {
                   <i className="fa-solid fa-user"></i> Account Info
                 </li>
                 <li
+                onClick={() => { setActiveTab("order"); navigate("/user/order-history"); }}
+                className={activeTab === "order" ? "active-tab" : ""}
+              >
+                <i class="fa-solid fa-clock-rotate-left"></i> Order History
+              </li>
+                <li
                   onClick={() => { setActiveTab("cart"); navigate("/cart"); }}
                   className={activeTab === "cart" ? "active-tab" : ""}
                 >
@@ -121,6 +135,12 @@ const Account = () => {
                 className={activeTab === "account" ? "active-tab" : ""}
               >
                 <i className="fa-solid fa-user"></i> Account Info
+              </li>
+              <li
+                onClick={() => { setActiveTab("order"); navigate("/user/order-history"); }}
+                className={activeTab === "order" ? "active-tab" : ""}
+              >
+                <i class="fa-solid fa-clock-rotate-left"></i> Order History
               </li>
               <li
                 onClick={() => { setActiveTab("cart"); navigate("/cart"); }}
@@ -162,7 +182,7 @@ const Account = () => {
                                 userData.img instanceof File
                                   ? URL.createObjectURL(userData.img)
                                   : userData.img
-                                    ? `/uploads/${userData.img}`  // Ensure correct path
+                                    ?` /uploads/${userData.img}`  // Ensure correct path
                                     : require('../../assets/images/profile.jpg')
                               }
                               alt="User"
@@ -175,8 +195,8 @@ const Account = () => {
                       <div className="dashboard-info">
                         {userData && (
                           <>
-                            <p>Email: <span>{userData.email}</span></p>
-                            <p>Phone: <span>{userData.contact}</span></p>
+                            <p><span><p>Email:</p> </span> {userData.email}</p>
+                            <p><span><p>Phone:</p> </span> {userData.contact}</p>
                           </>
                         )}
                       </div>
@@ -195,8 +215,8 @@ const Account = () => {
                         {userData ? (
                           <>
                             <p className="para1">{userData.address || "Not Provided"}</p>
-                            <p>Phone: <span>{userData.contact}</span></p>
-                            <p>Email: <span>{userData.email}</span></p>
+                            <p><span><p>Email:</p> </span> {userData.email}</p>
+                            <p><span><p>Phone:</p> </span> {userData.contact}</p>
                           </>
                         ) : (
                           <p>Loading address info...</p>
@@ -212,6 +232,8 @@ const Account = () => {
             )}
 
             {activeTab === "account" && <UserInfo />}
+
+            {activeTab === "order" && <OrderHistory />}
 
             {activeTab === "cart" && (
               <div className="content-cart">

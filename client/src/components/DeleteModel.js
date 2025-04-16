@@ -8,7 +8,7 @@ const DeleteModal = ({ isOpen, onClose, onConfirm, fieldName }) => {
 
   useEffect(() => {
     if (isOpen) {
-      const newRandom = Math.floor(Math.random() * 100) + 1;
+      const newRandom = Math.floor(Math.random() * 200) + 1;
       setRandomNumber(newRandom);
       setUserInput("");
       setIsCorrect(false);

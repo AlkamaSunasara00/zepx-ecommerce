@@ -136,7 +136,7 @@
     width: 320px;
 }
 .contact-table .contact-nameee-td{
-    width: 30px;
+    width: 55px;
 }
 .contact-table .contact-namee-td{
    width: 30px;
@@ -146,10 +146,11 @@
    width: 205px;
 }
 #contact-nameee-td{
-   width: 43px;
+   
+   width: 80px;
 }
 #contact-namee-td{
-   width: 43px;
+   width: 55px;   
 }
 #contact-feed-td{
    width: 290px;

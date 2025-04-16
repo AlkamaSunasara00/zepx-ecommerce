@@ -13,7 +13,16 @@ function Product() {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const dropdownRef = useRef(null)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
+
+    const pageObserver = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+            }
+        },{ threshold: 0.1 }
+    );
 
     const fetchProducts = async () => {
         try {
@@ -70,8 +79,8 @@ function Product() {
         <div>
             <Navbar />
             <div className='container'>
-                <div className='product'>
-                    <div className='product-container'>
+                <div className='product' >
+                    <div className={`product-container ${isVisible ? "fade-in" : ""}`}>
                         <aside>
                             <div className='sidebar-category-section'>
                                 <div className='sidebar-category'>

@@ -25,7 +25,7 @@
 }
 
 /* Input fields */
-.loginn input[type="email"],
+.loginn input[type="text"],
 .loginn input[type="password"] {
   display: block;
   border: none;
@@ -39,7 +39,7 @@
   #c3e0e5;
   color: #565555;
 }
-.loginn input[type=email] {
+.loginn input[type=text] {
   animation: bounce 1s;
 }
 .loginn input[type=password] {

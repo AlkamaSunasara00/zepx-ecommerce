@@ -8,18 +8,22 @@ const port = process.env.REACT_APP_URL;
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(localStorage.getItem("user_id"));
 
     useEffect(() => {
         const userId = localStorage.getItem("user_id");
+        setUser(userId); // Update user state whenever localStorage changes
+    }, []);
+
+    useEffect(() => {  // This useEffect handles cart updates based on user
+        const userId = localStorage.getItem("user_id");
         if (userId) {
-            setUser(userId);
             mergeLocalStorageCart(userId);
             fetchCart(userId);
         } else {
-            fetchCart(null); // Load cart from local storage
+            fetchCart(null);
         }
-    }, []);
+    }, [user]);
 
     const mergeLocalStorageCart = async (userId) => {
         const localCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -183,6 +187,8 @@ export const CartProvider = ({ children }) => {
         updateQuantity,
         deleteCart,
         addToCart,
+        user, // Expose the user state
+        setUser, // Expose the setUser function
     };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

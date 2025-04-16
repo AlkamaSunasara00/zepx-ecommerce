@@ -190,7 +190,6 @@
     margin-bottom: 15px;
 }
 
-.item-info {}
 
 .item-info-heading {
     margin: 7px 0px;
@@ -198,24 +197,20 @@
 
 }
 
-.item-info p {}
 
-.item-info input {
+.item-info-data p {
+    color: #191C1F;
     width: -webkit-fill-available;
+    scrollbar-width: none;
+    background-color: white;
     padding: 11px;
     border-radius: 6px;
-    border-color: #E4E7E9;
-    border-width: 0.1px;
+    border: 1px solid #E4E7E9;
+    font-size: 14.5px;
+    line-height: 22px;
 
 }
 
-.item-info input:focus {
-    outline: none;
-}
-
-.item-info input::placeholder {
-    color: #191C1F;
-}
 
 .item-button {
     display: flex;
@@ -254,7 +249,6 @@
 
 }
 
-.item-buy-button {}
 
 .item-buy-button button {
     font-size: 14px;
@@ -369,44 +363,8 @@
     }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1000px) {
-    .item-section {
-        width: 96%;
-    }
 
-    .item-main-img {
-        height: 222px;
-        /* width: 372px; */
-    }
-
-    .item-name {
-        font-size: 16px;
-    }
-
-    .item-disc {
-        margin: 0 auto;
-    }
-
-    .item-description-body {
-        flex-wrap: wrap;
-    }
-
-    .item-description-content {
-        text-align: justify;
-        width: 90%;
-        margin-bottom: 23px;
-    }
-
-    .item-description-features {
-        width: 40%;
-    }
-
-    .item-description-shipping {
-        width: 43%;
-    }
-}
-
-@media only screen and (min-width: 629px) and (max-width: 768px) {
+@media only screen and (min-width: 629px) and (max-width: 996px) {
     .item-section {
         width: 96%;
         display: block;

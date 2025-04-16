@@ -67,7 +67,7 @@ function Customer() {
             <div className='main-Admin-container'>
                 <div className='header-Admin'>
                     <div className='header-Admin-txt'>
-                        <p>Coustomers</p>
+                        <p>Customers</p>
                     </div>
                     <div className='header-customer-btns'>
                         <div className='header-Admin-export'>
@@ -131,7 +131,7 @@ function Customer() {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="7">No admins found</td>
+                                    <td colSpan="7">No user found</td>
                                 </tr>
                             )}
                         </tbody >

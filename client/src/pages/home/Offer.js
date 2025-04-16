@@ -34,7 +34,7 @@ function Offer() {
                         <div className="offer-image">
                             <img src={`./uploads/${offer.img}`} alt="Offer"/>
                         </div>
-                        <button className="offer-btn">Shop Now</button>
+                        {/* <button className="offer-btn">Shop Now</button> */}
                     </div>
                 </div>
             ) : (

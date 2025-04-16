@@ -15,10 +15,11 @@ router.put("/updatedata/:id",location.single("img"),signup.updatedata);
 router.delete("/deleteuser/:id",signup.deleteuser);
 
 
+router.post("/sendotp", signup.sendPasswordResetOTP);   // OTP bhejne ka route
+router.post("/verifyotp", signup.verifyOTP); // OTP verify karke password reset ka route
+router.post("/verifyotpcheck", signup.verifyOTPCheck); // OTP verify karke password reset ka route
+
 
 
 
 module.exports=router;
-
-
-

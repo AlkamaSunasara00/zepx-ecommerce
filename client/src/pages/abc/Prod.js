@@ -50,33 +50,31 @@ const Prod = () => {
 
 
 
-    // const deleteproducts = async (id) => {
-    //     const confirm = window.confirm("Are you sure you want to delete category")
-    //     if (confirm)
-    //         try {
-    //             await axios.delete(`http://localhost:4800/deleteproducts/${id}`);
-    //             getproducts();
-    //         } catch (error) {
-    //             console.error(error);
-
-    //         }
-    // }
-
     const deleteproducts = async (id) => {
-        try {
-            await axios.delete(`${port}/deleteproducts/${id}`);
-            setselectproduct(null);
-            setmodalOpen(false)
-            getproducts();
-        } catch (error) {
-            console.error(error);
-        }
-    };
+        const confirm = window.confirm("Are you sure you want to delete category")
+        if (confirm)
+            try {
+                await axios.delete(`http://localhost:4800/deleteproducts/${id}`);
+                getproducts();
+            } catch (error) {
+                console.error(error);
 
-    const handleDelete = (id) => {
-        setselectproduct(id);
-        setmodalOpen(true);
-    };
+            }
+    }
+
+    // const deleteproducts = async (id) => {
+    //     try {
+    //         await axios.delete(`${port}/deleteproducts/${id}`);
+    //         getproducts();
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+
+    // const handleDelete = (id) => {
+    //     setselectproduct(id);
+    //     setmodalOpen(true);
+    // };
 
     return (
         <>
@@ -140,7 +138,7 @@ const Prod = () => {
                                 <NavLink to="/UpdateProducts" state={{ id: item.product_id }}><button>
                                     EDIT
                                 </button></NavLink></td>
-                                <i className="fa-solid fa-trash" onClick={() => handleDelete(item.product_id)}></i>
+                                <i className="fa-solid fa-trash" onClick={() => deleteproducts(item.product_id)}></i>
                             {/* <td><button onClick={() => deleteproducts(item.product_id)}>delete</button></td> */}
 
                         </tr>
@@ -148,12 +146,12 @@ const Prod = () => {
                 </tbody>
             </table>
         </div >
-        <DeleteModal
+        {/* <DeleteModal
         isOpen={modalOpen}
         onClose={() => setmodalOpen(false)}
         onConfirm={deleteproducts}
         fieldName={"products"}
-    />
+    /> */}
 </>
     )
 }

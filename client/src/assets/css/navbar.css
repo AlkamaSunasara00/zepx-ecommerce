@@ -6,26 +6,44 @@
     font-family: poppins, sans-serif;
     color: inherit;
     outline: none;
-
-
 }
 
-.nav{
-    position: sticky;
+.nav {
+    width: 100%;
+    position: sticky;  /* Changed from sticky */
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    background-image: linear-gradient(98deg, #F5F5F7, #F5F5F9);
 }
-.contener {
+
+.container {
     width: 100%;
 }
 
+/* Navbar */
 .navbar {
     width: 100%;
-    background-image: linear-gradient(98deg, #383638, #0B0B0B);
-
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background-color 0.4s ease-in-out, clip-path 0.4s ease-in-out;
 }
+
+.navbar.dark {
+    background-image: linear-gradient(98deg, #383638, #0B0B0B);
+    box-shadow: none;
+}
+
+.navbar.light {
+    background-image: linear-gradient(98deg, #f0f0f1, #F5F5F9);
+    /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19),
+                0px 6px 6px rgba(0, 0, 0, 0.23); */
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
 
 .navbar-section {
     width: 75%;
@@ -34,12 +52,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #8B8E99;
+    color: #5e6266;
+}
+.navbar.dark .navbar-section{
+        width: 75%;
+        padding: 17px 0px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #a0a2a5;
 }
 
 .navbar-logo-section {
     width: 104px;
-    height: 25px;
+    height: 30px;
     display: flex;
 }
 
@@ -58,9 +85,9 @@
 }
 
 .navbar-hamburger-dropdown {
-    width: 83%;
+    width: 100%;
     padding: 10px 0px;
-    border-radius: 0px 0px 12px 0px;
+    /* border-radius: 0px 0px 12px 0px; */
     position: absolute;
     top: 59px;
     left: 0;
@@ -86,6 +113,7 @@
     gap: 10px;
     width: 90%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .navbar-hamburger-dropdown ul li {
@@ -113,6 +141,7 @@
     list-style: none;
     display: flex;
     gap: 20px;
+    font-size: 16px;
 }
 
 .navbar-link li {
@@ -137,15 +166,12 @@
 .navbar-link-category-dropdown {
     border-radius: 10px;
     position: absolute;
-    top: 40px;
-    left: -40px;
     background-image: linear-gradient(-348deg, #383638, #0B0B0B);
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     padding: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    min-width: 150px;
     z-index: 10;
 }
 
@@ -205,6 +231,7 @@
     list-style: none;
     display: flex;
     gap: 20px;
+    font-size: 16px;
 }
 
 ul {

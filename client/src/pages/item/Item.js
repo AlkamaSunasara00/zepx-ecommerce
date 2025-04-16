@@ -152,24 +152,24 @@ function Item() {
                                     <div className='item-info-heading'>
                                         <p>Memory</p>
                                     </div>
-                                    <div>
-                                        <input type='text' placeholder={data.memory} readOnly />
+                                    <div className='item-info-data'>
+                                        <p>{data.memory}</p>
                                     </div>
                                 </div>
                                 <div className='item-info'>
                                     <div className='item-info-heading'>
                                         <p>Size</p>
                                     </div>
-                                    <div>
-                                        <input type='text' placeholder={data.size} readOnly />
+                                    <div className='item-info-data'>
+                                    <p>{data.size}</p>
                                     </div>
                                 </div>
                                 <div className='item-info'>
                                     <div className='item-info-heading'>
                                         <p>Storage</p>
                                     </div>
-                                    <div>
-                                        <input type='text' placeholder={data.storage} readOnly />
+                                    <div className='item-info-data'>
+                                    <p>{data.storage}</p>
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +207,23 @@ function Item() {
                                     </div>
 
                                     <div className='item-buy-button'>
-                                        <NavLink to={"/checkout"}><button>Buy Now</button></NavLink>
+                                        <NavLink
+                                            to="/checkout"
+                                            state={{
+                                                fromItem: true,
+                                                singleItem: {
+                                                    product: data,
+                                                    quantity: counter,
+                                                    product_id: data.id || id
+                                                },
+                                                summary: {
+                                                    subTotal: discountedPrice * counter,
+                                                    tax: taxAmount * counter,
+                                                    discount: discountAmount * counter,
+                                                    total: total * counter
+                                                }
+                                            }}
+                                        ><button>Buy Now</button></NavLink>
                                     </div>
                                 </div>
                             )}

@@ -39,7 +39,7 @@ const Login = () => {
     e.preventDefault();
     try {
         const response = await axios.post("http://localhost:4800/checkadmins", {
-            identifier: loginInfo.email, 
+            identifier: loginInfo.identifier, 
             password: loginInfo.password
         });
 
@@ -79,13 +79,13 @@ const Login = () => {
                 <h1 className="h1" id="login">Login</h1>
                 <form onSubmit={handleSubmit}>
                     <input
-                        type="email"
+                        type="text"
                         id="email"
-                        name="email"
+                        name="identifier"
                         placeholder="Email"
-                        value={loginInfo.email} 
+                        value={loginInfo.identifier} 
                         onChange={handlechange}
-                        pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                        // pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                         required
                     />
                     <input

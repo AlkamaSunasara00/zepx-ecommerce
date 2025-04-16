@@ -34,7 +34,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .offer-btn {
+  /* .offer-btn {
     color: #FFFFFF;
     background-color: #3858D6;
     padding: 15px 30px;
@@ -47,7 +47,7 @@
   
   .offer-btn:hover {
     background-color: #1e40c6;
-  }
+  } */
 
 .loading-container {
   display: flex;

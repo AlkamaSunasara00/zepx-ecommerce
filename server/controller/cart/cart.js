@@ -73,65 +73,72 @@ const deleteCart = (req, res) => {
 
 
 const mergeCart = (req, res) => {
-    const { user_id, cartItems } = req.body;
-  
-    if (!user_id || !cartItems || !Array.isArray(cartItems)) {
-      return res.status(400).json({ error: "Invalid request data" });
-    }
-  
-    const promises = cartItems.map((item) => {
-      return new Promise((resolve, reject) => {
-        const checkQuery = "SELECT * FROM cart WHERE user_id = ? AND product_id = ?";
-        connection.query(checkQuery, [user_id, item.product_id], (err, results) => {
-          if (err) {
-            reject(err);
-          } else if (results.length > 0) {
-            // Product already exists, update quantity
-            const updateQuery = "UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND product_id = ?";
-            connection.query(updateQuery, [item.quantity, user_id, item.product_id], (err, updateResults) => {
-              if (err) {
-                reject(err);
-              } else {
-                resolve();
-              }
-            });
-          } else {
-            // Product doesn't exist, insert new row
-            // 1. Fetch product price
-            const productQuery = "SELECT price FROM products WHERE product_id = ?";
-            connection.query(productQuery, [item.product_id], (productErr, productResults) => {
-              if (productErr) {
-                reject(productErr);
-              } else if (productResults.length > 0) {
-                const price = productResults[0].price;
-                const totalAmount = item.quantity * price;
-  
-                // 2. Insert with correct total_amount
-                const insertQuery = "INSERT INTO cart (user_id, product_id, quantity, total_amount) VALUES (?, ?, ?, ?)";
-                connection.query(insertQuery, [user_id, item.product_id, item.quantity, totalAmount], (insertErr, insertResults) => {
-                  if (insertErr) {
-                    reject(insertErr);
-                  } else {
-                    resolve();
-                  }
-                });
-              } else {
-                // Product not found, skip insertion
-                resolve();
-              }
-            });
+  const { user_id, cartItems } = req.body;
+
+  if (!user_id || !cartItems || !Array.isArray(cartItems)) {
+    return res.status(400).json({ error: "Invalid request data" });
+  }
+
+  try {
+    cartItems.forEach(async (item) => {
+      const existingItem = await new Promise((resolve, reject) => {
+        connection.query(
+          "SELECT * FROM cart WHERE user_id = ? AND product_id = ?",
+          [user_id, item.product_id],
+          (err, results) => {
+            if (err) reject(err);
+            else resolve(results[0]); // Resolve with the first result or undefined
           }
+        );
+      });
+
+      if (existingItem) {
+        // Update existing item
+        await new Promise((resolve, reject) => {
+          connection.query(
+            "UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND product_id = ?",
+            [item.quantity, user_id, item.product_id],
+            (err, results) => {
+              if (err) reject(err);
+              else resolve(results);
+            }
+          );
         });
-      });
+      } else {
+        // Insert new item
+        const product = await new Promise((resolve, reject) => {
+          connection.query(
+            "SELECT price FROM products WHERE product_id = ?",
+            [item.product_id],
+            (err, results) => {
+              if (err) reject(err);
+              else resolve(results[0]);
+            }
+          );
+        });
+
+        if (product) {
+          const totalAmount = item.quantity * product.price;
+          await new Promise((resolve, reject) => {
+            connection.query(
+              "INSERT INTO cart (user_id, product_id, quantity, total_amount) VALUES (?, ?, ?, ?)",
+              [user_id, item.product_id, item.quantity, totalAmount],
+              (err, results) => {
+                if (err) reject(err);
+                else resolve(results);
+              }
+            );
+          });
+        }
+      }
     });
-  
-    Promise.all(promises)
-      .then(() => res.status(200).json({ message: "Cart merged successfully" }))
-      .catch((err) => {
-        console.error("Error merging cart:", err);
-        res.status(500).json({ error: "Failed to merge cart" });
-      });
-  };
+
+    res.status(200).json({ message: "Cart merged successfully" });
+  } catch (err) {
+    console.error("Error merging cart:", err);
+    res.status(500).json({ error: "Failed to merge cart" });
+  }
+};
 
 
 

@@ -157,15 +157,29 @@ const updateproducts = (req, res) => {
 // delete api
 const deleteproducts = (req, res) => {
   const { id } = req.params;
-  const q = "DELETE FROM products WHERE product_id =?";
-  connection.query(q, [id], (err, results) => {
-    if (err) {
-      res.status(500).json({ err: "error in deleting" })
-    } else {
-      res.status(200).json(results);
-    }
-  })
-}
+
+  // First, delete from cart table where product_id is referenced
+  const deleteFromCart = "DELETE FROM cart WHERE product_id = ?";
+  connection.query(deleteFromCart, [id], (err, results) => {
+      if (err) {
+          console.error("Error deleting from cart:", err);
+          return res.status(500).json
+      }
+
+      // Now, delete from products table
+      const deleteFromProducts = "DELETE FROM products WHERE product_id = ?";
+      connection.query(deleteFromProducts, [id], (err, results) => {
+          if (err) {
+              console.error("Error deleting product:", err);
+              return res.status(500).json
+          }
+
+          res.status(200).json({ message: "Product deleted successfully" });
+      });
+  });
+};
+
+
 
 
 

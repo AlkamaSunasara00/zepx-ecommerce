@@ -51,7 +51,7 @@ function Categories() {
     };
 
     const deleteproducts = async (id) => {
-        const confirm = window.confirm("Are you sure you want to delete category")
+        const confirm = window.confirm("Are you sure you want to delete product")
         if (confirm)
             try {
                 await axios.delete(`http://localhost:4800/deleteproducts/${id}`);

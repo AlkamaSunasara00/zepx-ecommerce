@@ -155,6 +155,7 @@ const DashboardHomeRoute = () => {
       <Route path="/admin" element={<ProtectedRoute element={<Navbar />} />}>
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="Add-Product" element={<Addproduct />} />
+        <Route path="/admin/update-product" element={< UpdateProduct/>} />
         <Route path="/admin/update-category" element={<UpdateCategory />} />
         <Route path="/admin/Veiw-Product" element={<VeiwProduct />} />
         <Route path="add-category" element={<Addcategory />} />

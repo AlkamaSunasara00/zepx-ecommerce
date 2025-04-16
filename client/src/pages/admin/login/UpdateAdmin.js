@@ -1,38 +1,71 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../../../assets/css/admin/login/addadmin.css';
 import { useRef } from "react";
 import { NavLink } from 'react-router-dom';
+import '../../../assets/css/admin/login/addadmin.css';
+
+
 const port = process.env.REACT_APP_URL;
 
-const UpdateAdmin = () => {
+
+
+function UpdateAdmin() {
     const [editadmin, seteditadmin] = useState({
-        img: null,
         username: "",
         email: "",
+        password: "",
+        img: null,
         contact: "",
         address: "",
         role: "",
         status: "",
-        password: ""
     });
+    
     const location = useLocation();
     const navigate = useNavigate();
 
 
+    // const fetchadminbyid = async (id) => {
+    //     try {
+    //         const res = await axios.get(${port}/getadminbyid/${id})
+
+    //         seteditadmin(res.data[0])
+    //     }
+
+    //     catch (error) {
+    //         console.error(error);
+
+    //     }
+    // };
+
+
     const fetchadminbyid = async (id) => {
+        // console.log("Fetching admin with ID:", id);
         try {
-            const res = await axios.get(`${port}/getadminbyid/${id}`)
-
-            seteditadmin(res.data[0])
-        }
-
-        catch (error) {
-            console.error(error);
-
+            const res = await axios.get(`${port}/getadminbyid/${id}`);
+            // console.log("API Response:", res.data);
+            // if (res.data) {
+                seteditadmin(res.data);
+            // } else {
+            //     console.error("No data found for this admin.");
+            // }
+        } catch (error) {
+            console.error("Error fetching admin data:", error);
         }
     };
+    
+    
+
+
+    useEffect(() => {
+        // if (location.state?.id) {
+            fetchadminbyid(location.state?.id);
+        // } else {
+        //     console.error("No admin ID provided in location.state");
+        // }
+    }, [location.state?.id]);
+    
 
 
     const handlechange = (e) => {
@@ -51,10 +84,10 @@ const UpdateAdmin = () => {
         }))
     };
 
-    //  const fileInputRef = useRef(null);
-    //     const handleButtonClick = () => {
-    //         fileInputRef.current.click();
-    //     };
+    const fileInputRef = useRef(null);
+    const handleButtonClick = () => {
+        fileInputRef.current.click();
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,14 +109,14 @@ const UpdateAdmin = () => {
 
             )
             seteditadmin({
-                img: null,
                 username: "",
                 email: "",
+                password: "",
+                img: null,
                 contact: "",
                 address: "",
                 role: "",
-                status: "",
-                password: ""
+                status: ""
             })
             navigate("/admin/admin-manage")
         } catch (error) {
@@ -92,118 +125,115 @@ const UpdateAdmin = () => {
         }
     }
 
-    const fileInputRef = useRef(null);
-    const handleButtonClick = () => {
-        fileInputRef.current.click();
-    };
+
+  
 
 
+    // useEffect(() => {
+    //     fetchadminbyid(location.state.id);
+    // }, [location.state?.id]);
 
-
-    useEffect(() => {
-        fetchadminbyid(location.state.id);
-    }, [location.state.id]);
     return (
-        <div className='main-addadmin-container'>
-            <div className='header-addadmin'>
-                <div className='header-addadmin-txt'>
-                    Add Admin
-                </div>
-                <div className='header-addadmin-btns'>
-                    <div className="header-addadmin-cancel">
-                        <NavLink to={'/admin/category'}><button><i class="fa-solid fa-xmark"></i><p>cancel</p></button></NavLink>
-                    </div>
-                    <form onSubmit={handleSubmit}>
-                        <div className="header-addadmin-addadmin">
-                            <button type='submit' ><p>Update Admin</p></button>
+         <div className='main-addadmin-container'>
+                    <div className='header-addadmin'>
+                        <div className='header-addadmin-txt'>
+                            Update Admin
                         </div>
-                    </form>
-                </div>
-            </div>
-
-            <div className="addadmin-container">
-
-
-                <form onSubmit={handleSubmit}>
-                    <div className="sub-addadmin-container">
-                        <div className="sub1-addadmin-container">
-                            <p>Thumbnail</p>
-                            <div className='item1-addadmin-para' ><p>Photo</p></div>
-                            <div className='addadmin-input-photo' onClick={handleButtonClick}>
-                                <div className='addadmin-input-photo-icon'>
-                                    <i class="fa-regular fa-image"></i>
-                                </div>
-                                <div className='addadmin-input-photo-txt'>
-                                    <p>click here to add image</p>
-                                </div>
-                                <label id="upload">
-                                    <button type='button' >Update Image</button>
-                                </label>
-                                <input type="file" name="img" ref={fileInputRef} id="upload" accept="image/*" style={{ display: "none" }} onChange={handleFileChange} />
+                        <div className='header-addadmin-btns'>
+                            <div className="header-addadmin-cancel">
+                                <NavLink to={'/admin/admin-manage'}><button><i class="fa-solid fa-xmark"></i><p>cancel</p></button></NavLink>
                             </div>
-
-                        </div>
-                        <div className="sub2-addadmin-conatiner">
-                            <p>General Information</p>
-                            <div className='sub2-addadmin-input-name'>
-                                <div>
-                                    <label>UserName</label>
+                            <form onSubmit={handleSubmit}>
+                                <div className="header-addadmin-addadmin">
+                                    <button type='submit' ><p>Update Admin</p></button>
                                 </div>
-                                <input type='text' placeholder='Type UserName here. . .' name='username' value={editadmin.username} onChange={handlechange} />
-                            </div>
-                            <div className='sub2-addadmin-input-description'>
-                                <div className='addadmin-input-create'>
-                                    <div>
-                                        <label>Email</label>
-                                    </div>
-                                    <input type='text' name='email' value={editadmin.email} onChange={handlechange} />
-                                </div>
-                                <div className='addadmin-input-create'>
-                                    <div>
-                                        <label>Contact</label>
-                                    </div>
-                                    <input type='text' name='contact' value={editadmin.contact} onChange={handlechange} />
-                                </div>
-                                <div className='addadmin-input-create'>
-                                    <div>
-                                        <label>Address</label>
-                                    </div>
-                                    <input type='text' name='address' value={editadmin.address} onChange={handlechange} />
-                                </div>
-                                <div className='addadmin-input-create'>
-                                    <div>
-                                        <label>Role</label>
-                                    </div>
-                                    <input type='text' name='role' value={editadmin.role} onChange={handlechange} />
-                                </div>
-                                <div className='addadmin-input-create'>
-                                    <div>
-                                        <label>Status</label>
-
-                                    </div>
-                                    {/* <select name="status" value={editadmin.status} onChange={handlechange} width="47%" >
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select> */}
-                                    <select placeholder='Select a category' name="status" value={editadmin.status} onChange={handlechange} >
-                                        <option value="" disabled selected>Select a status</option>
-                                        <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
-                                    </select>   
-                                    {/* <input type='text' name='status' value={editadmin.status} onChange={handlechange} /> */}
-                                </div>
-                                <div className='addadmin-input-create'>
-                                    <div>
-                                        <label>Password</label>
-                                    </div>
-                                    <input type='text' name='password' value={editadmin.password} onChange={handlechange} />
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
+        
+                    <div className="addadmin-container">
+        
+        
+                        <form onSubmit={handleSubmit}>
+                            <div className="sub-addadmin-container">
+                                <div className="sub1-addadmin-container">
+                                    <p>Thumbnail</p>
+                                    <div className='item1-addadmin-para' ><p>Photo</p></div>
+                                    <div className='addadmin-input-photo' onClick={handleButtonClick}>
+                                        <div className='addadmin-input-photo-icon'>
+                                            <i class="fa-regular fa-image"></i>
+                                        </div>
+                                        <div className='addadmin-input-photo-txt'>
+                                            <p>click here to add image</p>
+                                        </div>
+                                        <label id="upload">
+                                            <button type='button' >Update Image</button>
+                                        </label>
+                                        <input type="file" name="img" ref={fileInputRef} id="upload" accept="image/*" style={{ display: "none" }} onChange={handleFileChange} />
+                                    </div>
+        
+                                </div>
+                                <div className="sub2-addadmin-conatiner">
+                                    <p>General Information</p>
+                                    <div className='sub2-addadmin-input-name'>
+                                        <div>
+                                            <label>UserName</label>
+                                        </div>
+                                        <input type='text' placeholder='Type UserName here. . .' name='username' value={editadmin.username} onChange={handlechange} />
+                                    </div>
+                                    <div className='sub2-addadmin-input-description'>
+                                        <div className='addadmin-input-create'>
+                                            <div>
+                                                <label>Email</label>
+                                            </div>
+                                            <input type='text' name='email' value={editadmin.email} onChange={handlechange} />
+                                        </div>
+                                        <div className='addadmin-input-create'>
+                                            <div>
+                                                <label>Contact</label>
+                                            </div>
+                                            <input type='text' name='contact' value={editadmin.contact} onChange={handlechange} />
+                                        </div>
+                                        <div className='addadmin-input-create'>
+                                            <div>
+                                                <label>Address</label>
+                                            </div>
+                                            <input type='text' name='address' value={editadmin.address} onChange={handlechange} />
+                                        </div>
+                                        <div className='addadmin-input-create'>
+                                            <div>
+                                                <label>Role</label>
+                                            </div>
+                                            <input type='text' name='role' value={editadmin.role} onChange={handlechange} />
+                                        </div>
+                                        <div className='addadmin-input-create'>
+                                            <div>
+                                                <label>Status</label>
+        
+                                            </div>
+                                            {/* <select name="status" value={editadmin.status} onChange={handlechange} width="47%" >
+                                                    <option value="active">Active</option>
+                                                    <option value="inactive">Inactive</option>
+                                                </select> */}
+                                            <select placeholder='Select a category' name="status" value={editadmin.status} onChange={handlechange} >
+                                                <option value="" disabled selected>Select a status</option>
+                                                <option value="active">Active</option>
+                                                <option value="inactive">Inactive</option>
+                                            </select>   
+                                            {/* <input type='text' name='status' value={editadmin.status} onChange={handlechange} /> */}
+                                        </div>
+                                        <div className='addadmin-input-create'>
+                                            <div>
+                                                <label>Password</label>
+                                            </div>
+                                            <input type='text' name='password' value={editadmin.password} onChange={handlechange} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
     )
 }
 

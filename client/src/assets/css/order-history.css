@@ -1,0 +1,200 @@
+ .content-order {
+    background-color: #ffffff;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+.sub1-order {
+    width: 100%;
+    padding-top: 13px;
+}
+.sub1-order p {
+    color: #000000;
+    margin-left: 20px;
+    font-size: 16px;
+    padding-bottom: 8px;
+}
+.history-table {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.history-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.history-table tbody {
+    display: block;
+    height: 60vh;
+    max-height: fit-content;
+    overflow-y: auto;
+    width: 100%;
+}
+.history-table tbody .status p{
+    width: 120px;
+    color: rgb(63, 208, 63);
+}
+.history-table thead .status p{
+    width: 120px;
+}
+.history-table tbody .action  {
+    color: #3858D6;
+    font-weight: 600;
+}
+.history-table tbody .action b {
+    display: flex;
+ }
+.history-table tbody .action b:hover {
+    color: #2943a9;
+    cursor: pointer;
+}
+.history-table th,
+.history-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 13px;
+    color: #555;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.history-table thead,
+.history-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.history-table td i {
+    margin-top: 4px;
+    margin-left: 10px;
+}
+.history-table tbody::-webkit-scrollbar {
+    display: none;
+}
+.history-table th {
+    background-color: #e5e5e7;
+    color: #888;
+    font-size: 13px;
+    font-weight: 500;
+}
+.history-table tr:hover {
+    background-color: #F5F5F7;
+}
+  
+@media (max-width: 768px) {
+    .history-table {
+        padding: 0;
+        box-shadow: none;
+        overflow: hidden;
+    }
+
+    .history-table tbody {
+        display: block;
+        height: 100vh;
+        max-height: 100%;
+        overflow-y:scroll;
+    }
+
+    .history-table table,
+    .history-table thead,
+    .history-table tbody,
+    .history-table th,
+    .history-table td,
+    .history-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .history-table tbody .status p {
+        color: rgb(63, 208, 63);
+        width: 120px;
+    }
+    .history-table thead .status p{
+        width: 120px;
+    }
+
+    .sub1-order {
+        width: 100%;
+        padding-top: 13px;
+    }
+    .history-table thead {
+        display: none; /* Hide header row */
+    }
+
+    .history-table tr {
+        background: #fff;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-bottom: 50px;
+        box-shadow: 0 4px 10px rgba(0.8, 0, 0, 0.2);
+        padding: 16px;
+    }
+
+    .history-table td {
+        position: relative;
+        padding-left: 45%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: none;
+        text-align: left;
+        font-size: 17px;
+        color: #333;
+    }
+
+    .history-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 22px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 600;
+        color: #6c757d;
+        white-space: nowrap;
+        font-size: 18px;
+    }
+
+    .history-table td p {
+        margin: 0;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .history-table td i {
+        margin-top: 4px;
+        margin-left: 10px;
+    }
+
+    .history-table tbody::-webkit-scrollbar {
+        display: none;
+    }
+
+    .action {
+        display: inline-flex;
+        gap: 5px;
+        color: #3858D6;
+        font-weight: 600;
+        cursor: pointer;
+        align-items: center;
+    }
+    .history-table tbody .action b {
+       display: flex;
+       gap: 5px;
+       color: #3858D6;
+       font-weight: 600;
+       cursor: pointer;
+       align-items: center;
+    }
+
+    .history-table tbody .action p {
+        color: #3858D6;
+        font-weight: 600;
+    }
+
+    .history-table tbody .action b p:hover {
+        color: #330bd2;
+        cursor: pointer;
+    }
+    .sub1-order p{
+        font-size: 22px;
+    }
+}

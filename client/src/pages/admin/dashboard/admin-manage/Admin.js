@@ -127,7 +127,7 @@ function Admin() {
                                         </td>
                                         <td>
                                             <div className='action-icons'>
-                                                <NavLink to={'/admin/update-admin'}><i className="fa-solid fa-eye"></i></NavLink>
+                                                <NavLink ><i className="fa-solid fa-eye"></i></NavLink>
                                                 <NavLink to="/admin/update-admin" state={{ id: item.admin_id }}>    <i className="fa-solid fa-pen"></i></NavLink>
                                                 <i className="fa-solid fa-trash" onClick={() => handleDelete(item.admin_id)}></i>
                                             </div>

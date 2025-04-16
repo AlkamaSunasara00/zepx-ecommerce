@@ -1,11 +1,16 @@
 const connection = require("../../connection/connection");
 const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
+const util = require("util");
 
+
+
+// Promisify the queries
+connection.query = util.promisify(connection.query);
 
 
 // ==================================== (add users api) ====================================
 // ===================================== (bcrypt.hash) =====================================
-
 
 const addUser = async (req, res) => {
 
@@ -14,10 +19,11 @@ const addUser = async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
+  const status = "active"; 
 
   const sqlQuery = `
-  INSERT INTO user  (first_name, last_name, username, email, password, contact, address, img) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-  const data = [first_name || '', last_name || '', username, email, hashedPassword, contact, address || '', img || ''];
+  INSERT INTO user  (first_name, last_name, username, email, password, contact, address, img,status) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)`;
+  const data = [first_name || '', last_name || '', username, email, hashedPassword, contact, address || '', img || '',status];
   // console.log(sqlQuery, data);
 
   connection.query(sqlQuery, data, (err) => {
@@ -64,6 +70,8 @@ const login = async (req, res) => {
     });
   });
 };
+
+
 
 
 
@@ -153,17 +161,129 @@ const updatedata = (req, res) => {
 
 }
 
+
+
+// delete api
 const deleteuser = (req, res) => {
   const { id } = req.params;
-  const q = "DELETE FROM user WHERE user_id=?";
-  connection.query(q, [id], (err, results) => {
-    if (err) {
-      res.status(500).json({ err: "error in deleting" })
-    } else {
-      res.status(200).json(results);
+
+  // First, delete from cart table where product_id is referenced
+  const deleteFromCart = "DELETE FROM cart WHERE user_id = ?";
+  connection.query(deleteFromCart, [id], (err, results) => {
+      if (err) {
+          console.error("Error deleting from cart:", err);
+          return res.status(500).json({ error: "Error deleting product from cart", details: err });
+      }
+
+      // Now, delete from products table
+      const deleteFromProducts = "DELETE FROM user WHERE user_id=?";
+      connection.query(deleteFromProducts, [id], (err, results) => {
+          if (err) {
+              console.error("Error deleting product:", err);
+              return res.status(500).json({ error: "Error deleting product", details: err });
+          }
+
+          res.status(200).json({ message: "Product deleted successfully" });
+      });
+  });
+};
+
+
+
+// Send OTP for Password Reset
+const sendPasswordResetOTP = async (req, res) => {
+    try {
+        const { email } = req.body;
+        // Check if email exists in database
+        const results = await connection.query("SELECT * FROM user WHERE email = ?", [email]);
+        if (results.length === 0) {
+            return res.status(404).json({ error: "Email not found" });
+        }
+
+        // Generate a 6-digit OTP
+        const otp = Math.floor(100000 + Math.random() * 900000);
+        await connection.query("Update user set otp_code = ? where email = ? ", [otp, email])
+
+        // Create transporter
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: "asrarjabir786@gmail.com",  // Replace with your email
+                pass: "jtmj iihg koat dyvg"  // Replace with generated App Password
+            }
+        });
+
+        // Email options
+        const mailOptions = {
+            from: "asrarjabir786@gmail.com",
+            to: email,
+            subject: "Password Reset OTP",
+            text:` Your OTP for password reset is: ${otp}`
+        };
+
+        // Send OTP email
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: "OTP sent successfully" });
+
+    } catch (error) {
+        res.status(500).json({ error: "Error sending OTP" });
     }
-  })
-}
+};
+
+
+
+const verifyOTPCheck = async (req, res) => {
+  try {
+      const { email, otp } = req.body;
+
+      const results = await connection.query("SELECT * FROM user WHERE email = ?", [email]);
+
+      if (results.length === 0) {
+          return res.status(404).json({ error: "Email not found" });
+      }
+
+      if (parseInt(results[0].otp_code) !== parseInt(otp)) {
+          return res.status(400).json({ error: "Invalid or expired OTP" });
+      }
+
+      res.status(200).json({ message: "OTP verified successfully" });
+
+  } catch (error) {
+      console.error("Error verifying OTP:", error);
+      res.status(500).json({ error: "Error verifying OTP" });
+  }
+};
+
+// Verify OTP and Reset Password
+const verifyOTP = async (req, res) => {
+  try {
+      const { email, otp, newPassword } = req.body;
+
+      const results = await connection.query("SELECT * FROM user WHERE email = ?", [email]);
+
+      if (results.length === 0) {
+          return res.status(404).json({ error: "Email not found" });
+      }
+
+      if (parseInt(results[0].otp_code) !== parseInt(otp)) {
+          return res.status(400).json({ error: "Invalid or expired OTP" });
+      }
+
+      // Hash new password
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+      // Update password in DB
+      await connection.query("UPDATE user SET password = ? WHERE email = ?", [hashedPassword, email]);
+
+      res.status(200).json({ message: "Password reset successfully" });
+
+  } catch (error) {
+      console.error("Error resetting password:", error);
+      res.status(500).json({ error: "Error resetting password" });
+  }
+};
+
+
 
 module.exports = {
   getUser,
@@ -172,5 +292,10 @@ module.exports = {
   userstatus,
   getuserbyid,
   updatedata,
-  deleteuser
+  deleteuser,
+  // sendOTP
+  sendPasswordResetOTP,
+  verifyOTPCheck,
+  verifyOTP
+
 };

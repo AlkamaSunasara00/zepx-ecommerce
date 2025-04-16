@@ -5,24 +5,37 @@
     padding-top: 4%;
     padding-bottom: 4%;
     position: relative;
+
 }
+
 
 .watch-banner-section {
     width: 65%;
     margin: 0 auto;
     background-color: black;
     border-radius: 17px;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+
+.watch-banner-section.visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .two {
     display: none;
 }
 
+
 .watch-banner-content {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 25px;
+
 }
 
 .watch-banner-img {
@@ -89,6 +102,21 @@
         gap: 230px;
     }
 
+    .watch-banner-section {
+        width: 65%;
+        margin: 0 auto;
+        background-color: black;
+        border-radius: 17px;
+       
+        
+    }
+    
+    
+    .watch-banner-section.visible {
+        opacity: 1;
+        transform: scale(1);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
     .one {
         display: none;
     }

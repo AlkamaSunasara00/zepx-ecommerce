@@ -22,8 +22,6 @@ const getbanner=(req,res)=>{
 
 // add api 
 const addbanner=(req,res)=>{
-    console.log("in server site console add banner image")
-    // const {name,created_by,updated_by}=req.body;
     const image =req.file? req.file.filename:null;
     const q="INSERT INTO banner (img) VALUES (?)";
     const data=[image];

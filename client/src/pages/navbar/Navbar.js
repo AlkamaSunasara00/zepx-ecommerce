@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import "../../assets/css/navbar.css";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { CartContext } from "../../context/CartContext";
+// import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 
 function Navbar() {
@@ -14,7 +15,16 @@ function Navbar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
     const [categories, setCategories] = useState([]);
+    const [isScrolled, setIsScrolled] = useState([]);
 
+
+    // const handleSuccess = (credentialResponse) => {
+    //     console.log(credentialResponse);
+    // }
+
+    // const handleError = () => {
+    //     console.log("google sign in Error");
+    // }
     const fetchCategories = async () => {
         try {
             const response = await fetch("http://localhost:4800/getcategory");
@@ -70,6 +80,22 @@ function Navbar() {
         };
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const banner = document.querySelector(".banner"); // Ensure the banner exists
+            if (banner) {
+                const bannerHeight = banner.offsetHeight;
+                setIsScrolled(window.scrollY > bannerHeight);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        handleScroll(); // Check on page load
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+
     const handleLogout = () => {
         localStorage.removeItem("isLoggedIn");
         localStorage.removeItem("user_id"); // Clear user info
@@ -80,7 +106,7 @@ function Navbar() {
     return (
         <nav className='nav'>
             <div className='Container'>
-                <div className='navbar'>
+                <div className={`navbar ${isScrolled ? "light" : "dark"}`}>
                     <div className='navbar-section'>
                         <div className='navbar-logo-section'>
                             <ul>
@@ -91,6 +117,7 @@ function Navbar() {
                                             <div className='navbar-hamburger-dropdown'>
                                                 <ul onClick={(e) => e.stopPropagation()}>
                                                     <li><NavLink to={"/"}>Home</NavLink></li>
+                                                    <li><NavLink to={"/about-us"}>About</NavLink></li>
                                                     <li onClick={toggleCategoryDropdown}>Categories <i className="fa-solid fa-angle-down"></i></li>
                                                     {isCategoryDropdownOpen && (
                                                         <ul>
@@ -104,7 +131,6 @@ function Navbar() {
                                                         </ul>
                                                     )}
                                                     <li><NavLink to={"/contact-us"}>Contact</NavLink></li>
-                                                    <li><NavLink to={"/about-us"}>About</NavLink></li>
                                                 </ul>
                                             </div>
                                             <div className='navbar-hamburger-dropdown-cancel'>
@@ -114,17 +140,17 @@ function Navbar() {
                                     )}
                                 </li>
                                 <li className='navbar-logo'>
-                                    <img src={require("../../assets/images/logo.png")} alt='logo' />
+                                    <img src={require("../../assets/images/logo2.png")} alt='logo' />
                                 </li>
                             </ul>
                         </div>
                         <div className='navbar-link'>
                             <ul>
                                 <li><NavLink to={"/"}>Home</NavLink></li>
+                                <li><NavLink to={"/about-us"}>About</NavLink></li>
                                 <NavLink to={`/product/products`}><li className='navbar-link-category'>Products</li></NavLink>
 
                                 <li><NavLink to={"/contact-us"}>Contact</NavLink></li>
-                                <li><NavLink to={"/about-us"}>About</NavLink></li>
                             </ul>
                         </div>
                         <div className='navbar-user'>
@@ -134,6 +160,7 @@ function Navbar() {
                                         <NavLink to={"/signup"}>
                                             <li className='navbar-signup'>Signup</li>
                                         </NavLink>
+                                        
                                         <li>|</li>
                                         <NavLink to={"/login"}>
                                             <li className='navbar-login'>Login</li>
@@ -146,11 +173,6 @@ function Navbar() {
                                                 <i className="fa-solid fa-user" ></i>
                                             </li>
                                         </NavLink>
-                                        {/* <NavLink to={"/cart"}>
-                                            <li>
-                                                <i class="fa-solid fa-cart-shopping"></i>
-                                            </li>
-                                        </NavLink> */}
                                     </>
                                 )}
                                 <NavLink to={"/cart"}>
@@ -161,8 +183,16 @@ function Navbar() {
                                         <p> {cartItems.length}</p>
                                     </li>
                                 </NavLink>
+                                <>
+                                        {/* <NavLink to={"/user"}>
+                                            <li className='navbar-profile'>
+                                                <i className="fa-solid fa-user" ></i>
+                                            </li>
+                                        </NavLink> */}
+                                    </> 
                             </ul>
                         </div>
+
                     </div>
                 </div>
             </div>

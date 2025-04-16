@@ -2,17 +2,22 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom right, #383638 3%, #0B0B0B 48%);
-    font-family:poppins;
+    font-family: poppins;
+    overflow: hidden; /* Prevents unwanted scrolling due to animation */
 }
 
+/* Banner Section */
 .banner-section {
     width: 90%;
     margin-left: auto;
     display: flex;
     padding-top: 5%;
     align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
 }
 
+/* Left-side text animation */
 .banner-section-about {
     width: 50%;
     padding-bottom: 50px;
@@ -24,28 +29,72 @@
     font-size: 67px;
     margin-bottom: 5%;
     line-height: 80px;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 1s ease-in-out  0.5s forwards;
 }
 
 .banner-section-about p {
     color: #8B8E99;
     font-weight: 600;
     font-size: 18px;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 1s ease-in-out 0.7s forwards;
 }
 
+/* Right-side image animation */
 .banner-section-img {
     width: 50%;
     display: flex;
     justify-content: center;
 }
 
-.banner-img{
+.banner-img {
     width: fit-content;
     height: fit-content;
 }
+
 .banner-img img {
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 1s ease-in-out forwards;
 }
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 
 @media only screen and (min-width: 1025px) and (max-width: 1124px) {
     

@@ -44,14 +44,16 @@ function Cart() {
                                     <div className="cart-item-remove">
                                         <i className="fa-solid fa-xmark" onClick={() => deleteCart(item.product_id)}></i>
                                     </div>
-                                    <div className="cart-img">
-                                        {JSON.parse(item.product.img || "[]")[0] && (
-                                            <img src={`/uploads/${JSON.parse(item.product.img || "[]")[0]}`} alt="product" width="100px" />
-                                        )}
-                                    </div>
-                                    <div className="cart-item-name">
-                                        <p>{truncateString(item.product.title)}</p>
-                                    </div>
+                                    <NavLink to={`/item/${item.product_id}`}>
+                                            <div className="cart-img">
+                                                {JSON.parse(item.product.img || "[]")[0] && (
+                                                    <img src={`/uploads/${JSON.parse(item.product.img || "[]")[0]}`} alt="product" width="100px" />
+                                                )}
+                                            </div>
+                                            <div className="cart-item-name">
+                                                <p>{truncateString(item.product.title)}</p>
+                                            </div>
+                                    </NavLink>
                                 </div>
                                 <div className="cart2-item-header">
                                     <p>Price</p>
@@ -135,6 +137,7 @@ function Cart() {
                                             {/* <i className="fa-solid fa-x" onClick={() => deleteCart(item.product_id)}></i> */}
                                             <i className="fa-solid fa-x" onClick={() => deleteCart(item.cart_id || item.product_id)}></i>
                                         </div>
+                                        <NavLink to={`/item/${item.product_id}`}>
                                         <div className="item3-cart2">
                                             <div className="cart-img">
                                                 {item.product && item.product.img ? (
@@ -149,6 +152,7 @@ function Cart() {
                                                 <p>{truncateString(item.product?.title || "Unknown Product", 17)}</p>
                                             </span>
                                         </div>
+                                        </NavLink>
                                     </div>
                                     <div className="item3-cart3">
                                         <p>₹{item.product.price}</p>
@@ -190,7 +194,19 @@ function Cart() {
                                 <h5>₹{total.toFixed(2)}</h5>
                             </div>
                             <div className="cart2-btn">
-                              <NavLink to={"/checkout"}> <button>Buy Now</button></NavLink> 
+                                <NavLink
+                                    to={"/checkout"}
+                                    state={{
+                                        fromCart: true,
+                                        cartItems: cartItems,
+                                        summary: {
+                                            subTotal,
+                                            tax,
+                                            discount,
+                                            total
+                                        }
+                                    }}
+                                > <button>Buy Now</button></NavLink>
                             </div>
                         </div>
                     </div>
